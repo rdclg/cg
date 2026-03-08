@@ -1,0 +1,20 @@
+Formula:
+xv = xv_min + (xw - xw_min) * (xv_max - xv_min) / (xw_max - xw_min)
+yv = yv_min + (yw - yw_min) * (yv_max - yv_min) / (yw_max - yw_min)
+Python code:
+# Window coordinates
+xw_min, yw_min = 0, 0
+xw_max, yw_max = 100, 100
+# Viewport coordinates
+xv_min, yv_min = 200, 200
+xv_max, yv_max = 400, 400
+# Point in window
+xw, yw = 50, 75
+# Transform window → viewport
+# scaling and shifting formulas.
+#keeping the same relative position inside both boxes.
+xv = xv_min + (xw - xw_min) * (xv_max - xv_min) / (xw_max - xw_min)
+yv = yv_min + (yw - yw_min) * (yv_max - yv_min) / (yw_max - yw_min)
+print("Mapped point in viewport:", xv, yv)
+output:
+Mapped point in viewport: 300.0 350.0

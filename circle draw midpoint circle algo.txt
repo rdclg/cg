@@ -1,0 +1,29 @@
+def midpoint_circle(xc, yc, r):
+    x = 0
+    y = r
+    p = 1 - r   # decision parameter
+    print("Circle points are:")
+    while x <= y:
+        # Print 8 points using symmetry
+        print(xc + x, yc + y)
+        print(xc - x, yc + y)
+        print(xc + x, yc - y)
+        print(xc - x, yc - y)
+        print(xc + y, yc + x)
+        print(xc - y, yc + x)
+        print(xc + y, yc - x)
+        print(xc - y, yc - x)
+        print("------------------")
+        # Update p, x, y
+        if p < 0:
+            # move right (E)
+            x += 1
+            p = p + 2*x + 3
+        else:
+            # move diagonally (SE)
+            p = p + 2*(x - y) + 5
+            y -= 1
+            x += 1
+# Example
+midpoint_circle(0, 0, 5)
+

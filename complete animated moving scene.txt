@@ -1,0 +1,37 @@
+code:
+import pygame, sys, math
+pygame.init()
+W,H = 700,400
+s = pygame.display.set_mode((W,H))
+c = pygame.time.Clock()
+car = -80
+t = 0
+while True:
+    c.tick(60)
+    t = (t+1)%600
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            pygame.quit(); sys.exit()
+    # Sky
+    if t < 300:
+        s.fill((135,206,235))     # day
+        x = t*2
+        y = 200 - 80*math.sin(math.pi*t/300)
+        pygame.draw.circle(s,(255,255,0),(x,y),25)
+    else:
+        s.fill((20,20,40))        # night
+        pygame.draw.circle(s,(220,220,220),(W-(t-300)*2,80),20)
+    # Buildings
+    for x in range(0,W,100):
+        pygame.draw.rect(s,(40,40,60),(x,220,80,100))
+        for y in range(240,300,25):
+            pygame.draw.rect(s,(255,220,120),(x+15,y,10,15))
+    # Road
+    pygame.draw.rect(s,(60,60,60),(0,320,W,80))
+    # Car
+    pygame.draw.rect(s,(200,0,0),(car,290,70,30))
+    pygame.draw.circle(s,(0,0,0),(car+15,320),8)
+    pygame.draw.circle(s,(0,0,0),(car+55,320),8)
+    car = (car+3)%W
+    pygame.display.update()
+

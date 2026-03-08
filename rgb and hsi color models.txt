@@ -1,0 +1,10 @@
+Code:
+import cv2              # Import OpenCV
+import numpy as np      # Import NumPy
+img = np.zeros((200,200,3), dtype=np.uint8)  # Create black image
+img[:] = (0, 0, 255)                         # Red color (RGB)
+hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)   # Convert RGB to HSI
+cv2.imshow("BGR", img)    # Show BGR image
+cv2.imshow("HSV", hsv)    # Show HSV image
+cv2.waitKey(0)            # Wait for key
+cv2.destroyAllWindows()   # Close window
