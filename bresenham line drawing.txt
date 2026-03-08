@@ -1,0 +1,50 @@
+def bresenham_line(x1, y1, x2, y2):
+    # Calculate dx and dy
+    dx = x2 - x1
+    dy = y2 - y1
+    # Initial point
+    x, y = x1, y1
+    # Decision parameter
+    p = 2 * dy - dx
+    # List to store points
+    points = [(x, y)]
+    # Loop through all x values
+    for i in range(dx):
+        if p < 0:
+            x += 1
+            p = p + 2 * dy
+        else:
+            x += 1
+            y += 1
+            p = p + 2 * (dy - dx)
+        points.append((x, y))
+    return points
+# Main program to draw a line from (2, 2) to (8, 5)
+line_points = bresenham_line(2, 2, 8, 5)
+# Print points
+print("Line points:")
+for p in line_points:
+    print(p)
+
+Output:
+Line points:
+(2, 2)
+(3, 3)
+(4, 3)
+(5, 4)
+(6, 4)
+(7, 5)
+(8, 5)
+Note: Now,you can plot above points using Matplotlib
+
+
+Code to plot above point using Matplotlib:
+import matplotlib.pyplot as plt
+# Points
+x = [2,3,4,5,6,7,8]
+y = [2,3,3,4,4,5,5]
+
+# Draw line connecting points
+plt.plot(x, y)
+# Display the plot
+plt.show()
