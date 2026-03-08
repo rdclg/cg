@@ -1,0 +1,20 @@
+import pygame
+pygame.init()
+win = pygame.display.set_mode((400, 300))  # Make window
+x, y = 100, 100                             # Ball start position
+dx, dy = 3, 2                               # Speed (x=3, y=2)
+running = True
+while running:                                   # Keep animation running
+    for e in pygame.event.get():             # Check user actions
+        if e.type == pygame.QUIT:
+            running = False
+    x += dx                                  # Move ball horizontally
+    y += dy                                  # Move ball vertically
+    # Bounce from walls
+    if x <= 20 or x >= 380: dx = -dx         # If touch left/right → reverse x
+    if y <= 20 or y >= 280: dy = -dy         # If touch top/bottom → reverse y
+    win.fill((255, 255, 255))                # Clear screen
+    pygame.draw.circle(win, (255, 0, 0), (x, y), 20)  # Draw ball
+    pygame.display.update()                  # Show new frame
+    pygame.time.delay(20)                    # Wait a little
+pygame.quit()      

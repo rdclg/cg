@@ -1,0 +1,19 @@
+Code:
+#Triangle
+import matplotlib.pyplot as plt
+# Original triangle coordinates
+x = [1, 2, 3,1]
+y = [1, 3, 1,1]
+# Translation values
+tx = 2  # move right
+ty = 1  # move up
+# Translated triangle coordinates
+x_new = [i + tx for i in x]
+y_new = [i + ty for i in y]
+# Draw original triangle in red
+plt.plot(x , y , 'r-o',label='Original')
+# Draw translated triangle in blue
+plt.plot(x_new , y_new , 'b-o',label='Translated')
+plt.legend()
+plt.axis('equal')  # keep shape proportion
+plt.show()
